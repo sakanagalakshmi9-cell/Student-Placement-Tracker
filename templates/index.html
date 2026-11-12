@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Placement Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Student Placement Tracker</h1>
+    <p>Track your daily placement preparation</p>
+</header>
+
+<main class="container">
+
+    <section class="stats">
+        <div class="card">
+            <h3>Total Tasks</h3>
+            <h2>{{ total }}</h2>
+        </div>
+        <div class="card">
+            <h3>Completed</h3>
+            <h2>{{ completed }}</h2>
+        </div>
+        <div class="card">
+            <h3>Pending</h3>
+            <h2>{{ pending }}</h2>
+        </div>
+    </section>
+
+    <section class="progress-box">
+        <h2>Preparation Progress</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ progress }}%"></div>
+        </div>
+        <p>{{ progress }}% Completed</p>
+    </section>
+
+    <section class="task-box">
+        <h2>Add New Task</h2>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="Enter your task" required>
+            <select name="category" required>
+                <option value="">Select Category</option>
+                <option value="Python">Python</option>
+                <option value="SQL">SQL</option>
+                <option value="Aptitude">Aptitude</option>
+                <option value="Communication">Communication</option>
+                <option value="DSA">DSA</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+    </section>
+
+    <section class="task-box">
+        <h2>My Tasks</h2>
+
+        {% if tasks %}
+            {% for task in tasks %}
+                <div class="task">
+                    <div>
+                        <h3>{{ task["title"] }}</h3>
+                        <p>{{ task["category"] }} | {{ task["status"] }}</p>
+                    </div>
+
+                    <div class="actions">
+                        {% if task["status"] == "Pending" %}
+                            <a class="complete" href="/complete/{{ task['id'] }}">Complete</a>
+                        {% endif %}
+                        <a class="delete" href="/delete/{{ task['id'] }}">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No tasks yet. Add your first task!</p>
+        {% endif %}
+    </section>
+
+</main>
+</body>
+</html>

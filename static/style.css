@@ -1,0 +1,143 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f5fa;
+    color: #222;
+}
+
+header {
+    background: #243b70;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card,
+.progress-box,
+.task-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.card h2 {
+    color: #3156a3;
+    font-size: 30px;
+    margin-top: 12px;
+}
+
+.progress-box h2,
+.task-box h2 {
+    margin-bottom: 18px;
+}
+
+.progress-bar {
+    height: 15px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #24a36b;
+}
+
+.progress-box p {
+    margin-top: 10px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 150px;
+}
+
+button {
+    background: #3156a3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task p {
+    color: #777;
+    margin-top: 7px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.actions a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.complete {
+    background: #24a36b;
+}
+
+.delete {
+    background: #d94a4a;
+}
+
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .task {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
